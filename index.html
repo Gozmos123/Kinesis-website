@@ -82,6 +82,7 @@
     background:conic-gradient(from 200deg, var(--blue), var(--purple), var(--blue));
     flex-shrink:0;
   }
+  .brand-logo{width:34px;height:34px;object-fit:contain;flex-shrink:0;}
   .navlinks{display:flex;gap:36px;font-size:14px;font-weight:500;letter-spacing:0.03em;}
   .navlinks a{color:var(--silver);transition:color .2s ease;position:relative;}
   .navlinks a:hover{color:var(--white);}
@@ -99,8 +100,19 @@
     padding:180px 0 120px;
     overflow:hidden;
   }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background:url('assets/pickleball-banner.jpg') center 30%/cover no-repeat;
+    opacity:0.16;
+    mask-image:linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
+    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 40%, transparent 90%);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(100deg, var(--bg) 40%, transparent 75%);
+  }
   .hero-ring{
-    position:absolute; top:-220px; right:-220px;
+    position:absolute; top:-220px; right:-220px; z-index:1;
     width:640px;height:640px;border-radius:50%;
     background:conic-gradient(from 120deg, var(--blue), var(--purple), transparent 70%);
     filter:blur(2px);
@@ -203,6 +215,17 @@
   .gcard.g6::before{background:radial-gradient(circle at 50% 50%, var(--silver), #0A0C16 80%);}
   .gcard svg{position:relative;z-index:1;width:36px;height:36px;stroke:var(--white);opacity:0.85;}
   .gcard .glabel{position:relative;z-index:1;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:15px;letter-spacing:0.03em;}
+  .gcard.has-photo{background-size:cover;background-position:center;}
+  .gcard.has-photo::before{background:linear-gradient(to top, rgba(10,12,22,0.9) 0%, rgba(10,12,22,0.15) 55%, transparent 75%);}
+  .gcard.video-card{background:var(--panel);cursor:pointer;}
+  .gcard.video-card video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .gcard.video-card::before{background:linear-gradient(to top, rgba(10,12,22,0.9) 0%, rgba(10,12,22,0.05) 55%, transparent 75%);z-index:1;}
+  .play-badge{
+    position:absolute;top:14px;right:14px;z-index:2;
+    width:34px;height:34px;border-radius:50%;background:rgba(10,12,22,0.65);
+    display:flex;align-items:center;justify-content:center;border:1px solid var(--line);
+  }
+  .play-badge svg{width:14px;height:14px;fill:var(--white);stroke:none;}
   .gallery-note{margin-top:22px;font-size:13px;color:var(--muted);}
 
   /* ---------- Contact ---------- */
@@ -255,10 +278,11 @@
 
 <header id="siteHeader">
   <nav class="wrap">
-    <a href="#top" class="brand"><span class="ring"></span>KINESIS</a>
+    <a href="#top" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#programs">Programs</a>
+      <a href="#products">Products</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </div>
@@ -270,6 +294,7 @@
 <main id="top">
 
   <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-ring" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-inner">
@@ -302,17 +327,7 @@
         </div>
         <div class="about-visual">
           <div class="glow" aria-hidden="true"></div>
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="100" cy="100" r="88" stroke="url(#g1)" stroke-width="10"/>
-            <path d="M60 130 L100 60 L140 130" stroke="#F5F6FA" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="100" cy="60" r="10" fill="#F4E409"/>
-            <defs>
-              <linearGradient id="g1" x1="0" y1="0" x2="200" y2="200">
-                <stop stop-color="#2FA8FF"/>
-                <stop offset="1" stop-color="#9B3FE0"/>
-              </linearGradient>
-            </defs>
-          </svg>
+          <img src="assets/logo.png" alt="Kinesis Organization logo" style="position:relative;z-index:2;width:62%;">
         </div>
       </div>
     </div>
@@ -354,6 +369,34 @@
 
   <div class="streaks" aria-hidden="true"><span></span><span></span><span></span></div>
 
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="tag">PRODUCT PROMOTION</span>
+        <h2>Recovery &amp; performance picks</h2>
+        <p>Beyond officiating, Kinesis shares wellness products that support active, on-court lifestyles.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card" style="padding:0;overflow:hidden;">
+          <video src="assets/salonfix-promo.mp4" controls playsinline style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000;"></video>
+          <div style="padding:24px;">
+            <h3>SalonFix</h3>
+            <p>A convenient topical patch designed to provide soothing comfort for everyday body aches and muscle tension.</p>
+          </div>
+        </div>
+        <div class="program-card" style="padding:0;overflow:hidden;">
+          <video src="assets/energ-promo.mp4" controls playsinline style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000;"></video>
+          <div style="padding:24px;">
+            <h3>EnerG</h3>
+            <p>A natural source of sustained energy made from carefully selected ingredients — sweet potato, spinach, and carrots — formulated to support active lifestyles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="streaks" aria-hidden="true"><span></span><span></span><span></span></div>
+
   <section id="gallery">
     <div class="wrap">
       <div class="section-head">
@@ -362,14 +405,14 @@
         <p>A look at our workshops, training days, and community events.</p>
       </div>
       <div class="gallery-grid">
-        <div class="gcard g1"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><span class="glabel">Smash &amp; Paddle Workshop</span></div>
+        <div class="gcard g1 has-photo" style="background-image:url('assets/event-smash-paddle.jpg');"><span class="glabel">Smash &amp; Paddle Workshop</span></div>
         <div class="gcard g2"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6M12 17v4M7 4h10v6a5 5 0 0 1-10 0V4Z"/></svg><span class="glabel">Certification Milestones</span></div>
         <div class="gcard g3"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H4z"/><path d="M8 20h8M12 16v4"/></svg><span class="glabel">Court-Side Training</span></div>
         <div class="gcard g4"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span class="glabel">Community Clinics</span></div>
         <div class="gcard g5"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="glabel">Rules &amp; Mechanics Sessions</span></div>
         <div class="gcard g6"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg><span class="glabel">Campus Partnerships</span></div>
       </div>
-      <p class="gallery-note">Placeholder tiles shown — swap in your event photos any time and they'll drop right into this grid.</p>
+      <p class="gallery-note">More tiles are placeholders for now — send over more event photos any time and they'll drop right into this grid.</p>
     </div>
   </section>
 
@@ -419,7 +462,7 @@
 
 <footer>
   <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px;">
-    <div class="foot-brand"><span class="ring"></span>KINESIS ORGANIZATION</div>
+    <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
     <p>© 2026 Kinesis Organization · Non-Profit Educational Org · City College of Angeles</p>
   </div>
 </footer>

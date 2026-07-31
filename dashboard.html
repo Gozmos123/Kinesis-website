@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .dash-welcome{padding:160px 0 20px;}
+  .dash-welcome h1{font-size:clamp(28px,4vw,40px);}
+  .dash-welcome p{color:var(--muted);margin-top:10px;font-size:16px;}
+  .dash-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start;margin-top:36px;}
+  .dash-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px;}
+  .dash-card h2{font-size:20px;margin-bottom:6px;}
+  .dash-card .sub{color:var(--muted);font-size:13.5px;margin-bottom:22px;}
+  .event-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center;}
+  .event-details{display:flex;flex-direction:column;gap:6px;font-size:14.5px;color:var(--silver);}
+  .event-details b{color:var(--white);}
+  .quick-links{display:flex;flex-direction:column;gap:14px;}
+  .quick-links a{
+    display:flex;align-items:center;justify-content:space-between;
+    background:var(--bg);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;font-size:14.5px;font-weight:600;transition:border-color .2s ease;
+  }
+  .quick-links a:hover{border-color:var(--blue);}
+  .badge-registered{
+    display:inline-flex;align-items:center;gap:6px;color:var(--success);
+    font-size:13.5px;font-weight:600;
+  }
+  @media (max-width:860px){
+    .dash-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="dashboard.html" class="navghost active">Dashboard</a>
+        <a href="resources.html" class="navghost">Resources</a>
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main id="dashboardShell" style="display:none;">
+  <section class="dash-welcome">
+    <div class="wrap">
+      <span class="eyebrow">MEMBER DASHBOARD</span>
+      <h1 id="dashWelcome">Welcome back!</h1>
+      <p>Here's what's happening at Kinesis right now.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="dash-grid">
+        <div class="dash-card">
+          <h2>Upcoming Event</h2>
+          <div class="sub">Smash and Paddle — The New Era of Racket Sports Officiating</div>
+          <div class="event-row">
+            <div class="event-details">
+              <div><b>Date:</b> April 29, 2026</div>
+              <div><b>Time:</b> 7:00 AM – 5:00 PM</div>
+              <div><b>Venue:</b> CCA Covered Court</div>
+            </div>
+            <div>
+              <button class="btn btn-primary" id="registerBtn">Register</button>
+              <div id="registerStatus" style="margin-top:10px;font-size:13.5px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <h2>Quick Links</h2>
+          <div class="sub">Jump to what you need</div>
+          <div class="quick-links">
+            <a href="resources.html">Member Resources <span>→</span></a>
+            <a href="profile.html">My Profile <span>→</span></a>
+            <a href="programs.html">All Programs <span>→</span></a>
+            <a href="contact.html">Contact Kinesis <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  const EVENT_ID = 'smash-and-paddle-2026-04-29';
+
+  auth.onAuthStateChanged(async (user) => {
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+    document.getElementById('dashboardShell').style.display = 'block';
+    const name = user.displayName || user.email.split('@')[0];
+    document.getElementById('dashWelcome').textContent = 'Welcome back, ' + name.split(' ')[0] + '!';
+
+    const registerBtn = document.getElementById('registerBtn');
+    const registerStatus = document.getElementById('registerStatus');
+    const regRef = db.collection('registrations').doc(user.uid + '_' + EVENT_ID);
+
+    try {
+      const existing = await regRef.get();
+      if (existing.exists) {
+        registerBtn.textContent = 'Registered';
+        registerBtn.disabled = true;
+        registerStatus.innerHTML = '<span class="badge-registered">✓ You\\'re signed up</span>';
+      }
+    } catch (err) {
+      console.error(err);
+    }
+
+    registerBtn.addEventListener('click', async () => {
+      registerBtn.disabled = true;
+      registerBtn.textContent = 'Registering...';
+      try {
+        await regRef.set({
+          uid: user.uid,
+          name: name,
+          email: user.email,
+          eventId: EVENT_ID,
+          registeredAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        registerBtn.textContent = 'Registered';
+        registerStatus.innerHTML = '<span class="badge-registered">✓ You\\'re signed up</span>';
+      } catch (err) {
+        registerBtn.disabled = false;
+        registerBtn.textContent = 'Register';
+        registerStatus.innerHTML = '<span style="color:var(--error);">Something went wrong — try again.</span>';
+        console.error(err);
+      }
+    });
+  });
+</script>
+</body>
+</html>

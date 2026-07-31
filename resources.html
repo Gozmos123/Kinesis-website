@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Resources — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .res-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    padding:26px;display:flex;gap:18px;align-items:flex-start;
+  }
+  .res-icon{
+    width:44px;height:44px;border-radius:12px;flex-shrink:0;
+    background:linear-gradient(135deg,var(--blue),var(--purple));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .res-icon svg{width:22px;height:22px;stroke:var(--white);}
+  .res-card h3{font-size:16.5px;margin-bottom:6px;}
+  .res-card p{color:var(--muted);font-size:13.5px;line-height:1.55;margin-bottom:14px;}
+  .res-status{
+    display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:0.04em;
+    color:var(--yellow);border:1px solid rgba(244,228,9,0.3);border-radius:999px;
+    padding:4px 10px;text-transform:uppercase;
+  }
+  @media (max-width:860px){.res-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="dashboard.html" class="navghost">Dashboard</a>
+        <a href="resources.html" class="navghost active">Resources</a>
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main id="resourcesShell" style="display:none;">
+  <section class="page-header" style="padding-bottom:0;">
+    <div class="hero-ring" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">MEMBERS ONLY</span>
+      <h1>Resources</h1>
+      <p>Rulebooks, guides, and reference material for Kinesis officials-in-training.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="res-grid">
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <div>
+            <h3>Pickleball Official Rulebook</h3>
+            <p>The core rulebook covering scoring, faults, and court positioning for officiating pickleball matches.</p>
+            <span class="res-status">Coming Soon</span>
+          </div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+          <div>
+            <h3>Paddle Sports Officiating Guide</h3>
+            <p>Mechanics, signals, and match management best practices for paddle sport officials.</p>
+            <span class="res-status">Coming Soon</span>
+          </div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div>
+            <h3>Certification Prep Handbook</h3>
+            <p>A study companion for members working toward official certification.</p>
+            <span class="res-status">Coming Soon</span>
+          </div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div>
+            <h3>Match Management Checklist</h3>
+            <p>A quick-reference checklist for pre-match, in-match, and post-match official duties.</p>
+            <span class="res-status">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+      <p class="gallery-note" style="margin-top:28px;">These are placeholders — send over your actual rulebook/guide files any time and we'll turn these into real downloads.</p>
+    </div>
+  </section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  auth.onAuthStateChanged((user) => {
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+    document.getElementById('resourcesShell').style.display = 'block';
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="hero-ring" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">WHO WE ARE</span>
+      <h1>About Kinesis Organization</h1>
+      <p>A student-driven, non-profit org growing the next generation of racket-sport officials.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:20px;">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>Kinesis Organization is a <strong>non-profit, educational organization</strong> based at City College of Angeles in Angeles City, Philippines. We exist to make officiating education accessible — starting with the fastest-growing racket sports around: <strong>pickleball and paddle sports.</strong></p>
+          <p>Through structured seminars and real court practice, we help students and community members understand the rules, mechanics, and judgment calls that keep matches fair — turning enthusiastic players into confident, capable officials.</p>
+          <p>Whether you're a student looking to get involved, a player curious about the rules, or a community partner wanting to collaborate, Kinesis is built to welcome you onto the court.</p>
+          <div class="facts">
+            <div class="fact"><div class="num">2</div><div class="label">Sports Covered<br>Pickleball &amp; Paddle</div></div>
+            <div class="fact"><div class="num">CCA</div><div class="label">Home Base<br>City College of Angeles</div></div>
+            <div class="fact"><div class="num">100%</div><div class="label">Hands-On<br>Court-Based Training</div></div>
+          </div>
+        </div>
+        <div class="about-visual">
+          <div class="glow" aria-hidden="true"></div>
+          <img src="assets/logo.png" alt="Kinesis Organization logo">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px;">
+    <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
+    <p>© 2026 Kinesis Organization · Non-Profit Educational Org · City College of Angeles</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

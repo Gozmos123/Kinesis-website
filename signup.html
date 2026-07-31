@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section class="auth-shell">
+    <div class="hero-ring" aria-hidden="true" style="top:-260px;right:-260px;"></div>
+    <div class="auth-card">
+      <div class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</div>
+      <h1>Create your account</h1>
+      <p class="sub">Join Kinesis Organization — it's free.</p>
+
+      <form id="signupForm">
+        <div>
+          <label for="signupName">Full Name</label>
+          <input id="signupName" type="text" required autocomplete="name">
+        </div>
+        <div>
+          <label for="signupEmail">Email</label>
+          <input id="signupEmail" type="email" required autocomplete="email">
+        </div>
+        <div>
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" type="password" required minlength="6" autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+        <div class="form-status" id="authStatus"></div>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

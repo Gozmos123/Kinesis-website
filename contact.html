@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="hero-ring" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">GET IN TOUCH</span>
+      <h1>Let's talk officiating</h1>
+      <p>Questions about a workshop, partnership, or membership? Reach out — we'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:20px;">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-details">
+          <div class="contact-info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="l">Phone</div><div class="v"><a href="tel:+639921604137">0992 160 4137</a></div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg></div>
+            <div><div class="l">Email</div><div class="v"><a href="mailto:kinesisorganization@gmail.com">kinesisorganization@gmail.com</a></div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+            <div><div class="l">Messenger</div><div class="v">Kinesis Organization</div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="l">Location</div><div class="v">City College of Angeles, Angeles City, Philippines, 2009</div></div>
+          </div>
+        </div>
+        <form id="contactForm">
+          <div class="form-row">
+            <div><label for="name">Name</label><input id="name" type="text" required></div>
+            <div><label for="email">Email</label><input id="email" type="email" required></div>
+          </div>
+          <div><label for="subject">Subject</label><input id="subject" type="text" placeholder="Workshop inquiry, partnership, etc."></div>
+          <div><label for="message">Message</label><textarea id="message" required></textarea></div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px;">
+    <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
+    <p>© 2026 Kinesis Organization · Non-Profit Educational Org · City College of Angeles</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    status.textContent = "Thanks — your message is ready. Connect a form service (e.g. Formspree) to send it live.";
+    status.className = "form-status ok";
+    form.reset();
+  });
+</script>
+</body>
+</html>

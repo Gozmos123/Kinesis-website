@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="hero-ring" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">PRODUCT PROMOTION</span>
+      <h1>Recovery &amp; performance picks</h1>
+      <p>Beyond officiating, Kinesis shares wellness products that support active, on-court lifestyles.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:20px;">
+    <div class="wrap">
+      <div class="programs-grid">
+        <div class="program-card" style="padding:0;overflow:hidden;">
+          <video src="assets/salonfix-promo.mp4" controls playsinline style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000;"></video>
+          <div style="padding:24px;">
+            <h3>SalonFix</h3>
+            <p>A convenient topical patch designed to provide soothing comfort for everyday body aches and muscle tension.</p>
+          </div>
+        </div>
+        <div class="program-card" style="padding:0;overflow:hidden;">
+          <video src="assets/energ-promo.mp4" controls playsinline style="width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#000;"></video>
+          <div style="padding:24px;">
+            <h3>EnerG</h3>
+            <p>A natural source of sustained energy made from carefully selected ingredients — sweet potato, spinach, and carrots — formulated to support active lifestyles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px;">
+    <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
+    <p>© 2026 Kinesis Organization · Non-Profit Educational Org · City College of Angeles</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

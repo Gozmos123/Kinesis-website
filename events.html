@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Kinesis Organization</title>
+<title>Events — Kinesis Organization</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
@@ -14,6 +14,27 @@
   gtag('js', new Date());
   gtag('config', 'G-S6P4B00FM9');
 </script>
+<style>
+  .event-card{
+    display:grid;grid-template-columns:280px 1fr;gap:0;
+    background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:24px;
+  }
+  .event-card img{width:100%;height:100%;object-fit:cover;min-height:220px;}
+  .event-card .ebody{padding:32px;}
+  .event-status{
+    display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:0.05em;
+    padding:5px 12px;border-radius:999px;text-transform:uppercase;margin-bottom:14px;
+  }
+  .event-status.upcoming{background:rgba(47,168,255,0.12);border:1px solid rgba(47,168,255,0.4);color:var(--blue);}
+  .event-status.past{background:rgba(199,204,217,0.1);border:1px solid var(--line);color:var(--muted);}
+  .event-card h3{font-size:22px;margin-bottom:10px;}
+  .event-meta{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13.5px;margin-bottom:14px;}
+  .event-card p.desc{color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:20px;}
+  @media (max-width:700px){
+    .event-card{grid-template-columns:1fr;}
+    .event-card img{min-height:180px;}
+  }
+</style>
 </head>
 <body>
 
@@ -22,11 +43,11 @@
     <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
     <div class="navlinks">
       <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
+      <a href="about.html">About</a>
       <a href="programs.html">Programs</a>
       <a href="products.html">Products</a>
       <a href="gallery.html">Gallery</a>
-      <a href="events.html">Events</a>
+      <a href="events.html" class="active">Events</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
@@ -49,28 +70,44 @@
   <section class="page-header">
     <div class="hero-ring" aria-hidden="true"></div>
     <div class="wrap">
-      <span class="eyebrow">WHO WE ARE</span>
-      <h1>About Kinesis Organization</h1>
-      <p>A student-driven, non-profit org growing the next generation of racket-sport officials.</p>
+      <span class="eyebrow">WHAT'S HAPPENING</span>
+      <h1>Events</h1>
+      <p>Workshops, seminars, and community sessions — past and upcoming.</p>
     </div>
   </section>
 
   <section style="padding-top:20px;">
     <div class="wrap">
-      <div class="about-grid">
-        <div class="about-copy">
-          <p>Kinesis Organization is a <strong>non-profit, educational organization</strong> based at City College of Angeles in Angeles City, Philippines. We exist to make officiating education accessible — starting with the fastest-growing racket sports around: <strong>pickleball and paddle sports.</strong></p>
-          <p>Through structured seminars and real court practice, we help students and community members understand the rules, mechanics, and judgment calls that keep matches fair — turning enthusiastic players into confident, capable officials.</p>
-          <p>Whether you're a student looking to get involved, a player curious about the rules, or a community partner wanting to collaborate, Kinesis is built to welcome you onto the court.</p>
-          <div class="facts">
-            <div class="fact"><div class="num">2</div><div class="label">Sports Covered<br>Pickleball &amp; Paddle</div></div>
-            <div class="fact"><div class="num">CCA</div><div class="label">Home Base<br>City College of Angeles</div></div>
-            <div class="fact"><div class="num">100%</div><div class="label">Hands-On<br>Court-Based Training</div></div>
+      <div class="perk-banner member-only" style="display:none;" data-display="flex">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V7l-8-5Z"/></svg>
+        <span>As a member, register straight from your <a href="dashboard.html">Dashboard</a>.</span>
+      </div>
+
+      <div class="event-card">
+        <img src="assets/event-smash-paddle.jpg" alt="Smash and Paddle event poster">
+        <div class="ebody">
+          <span class="event-status upcoming">Upcoming</span>
+          <h3>Smash and Paddle: The New Era of Racket Sports Officiating</h3>
+          <div class="event-meta">
+            <span>📅 April 29, 2026</span>
+            <span>🕖 7:00 AM – 5:00 PM</span>
+            <span>📍 CCA Covered Court</span>
           </div>
+          <p class="desc">A hands-on seminar-workshop covering the fundamentals of officiating pickleball and paddle sports — open to students, players, and community members alike.</p>
+          <a href="dashboard.html" class="btn btn-primary member-only" style="display:none;" data-display="inline-block">Register on Dashboard</a>
+          <a href="signup.html" class="btn btn-ghost guest-only">Sign Up to Register</a>
         </div>
-        <div class="about-visual">
-          <div class="glow" aria-hidden="true"></div>
-          <img src="assets/logo.png" alt="Kinesis Organization logo">
+      </div>
+
+      <div class="event-card" style="opacity:0.7;">
+        <div style="background:linear-gradient(135deg, rgba(47,168,255,0.15), rgba(155,63,224,0.15));display:flex;align-items:center;justify-content:center;min-height:220px;">
+          <img src="assets/logo.png" alt="Kinesis logo" style="width:70px;height:70px;object-fit:contain;opacity:0.8;">
+        </div>
+        <div class="ebody">
+          <span class="event-status past">More Events Coming</span>
+          <h3>Future Kinesis Events</h3>
+          <div class="event-meta"><span>📅 To be announced</span></div>
+          <p class="desc">This is where upcoming clinics, campus partnerships, and community sessions will be listed as they're scheduled. Check back soon.</p>
         </div>
       </div>
     </div>

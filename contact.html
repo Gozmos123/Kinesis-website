@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6P4B00FM9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S6P4B00FM9');
+</script>
 </head>
 <body>
 
@@ -19,6 +26,7 @@
       <a href="programs.html">Programs</a>
       <a href="products.html">Products</a>
       <a href="gallery.html">Gallery</a>
+      <a href="events.html">Events</a>
       <a href="contact.html" class="active">Contact</a>
     </div>
     <div class="nav-right">
@@ -84,9 +92,24 @@
 </main>
 
 <footer>
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px;">
-    <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
-    <p>© 2026 Kinesis Organization · Non-Profit Educational Org · City College of Angeles</p>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:20px;width:100%;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
+      <div style="display:flex;gap:12px;">
+        <a href="https://www.facebook.com/profile.php?id=61588488886453" target="_blank" rel="noopener" aria-label="Kinesis on Facebook" style="width:36px;height:36px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#C7CCD9"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:20px;">
+      <p>© 2026 Kinesis Organization · Non-Profit Org · City College of Angeles</p>
+      <div style="display:flex;gap:20px;font-size:13px;">
+        <a href="events.html" style="color:var(--muted);">Events</a>
+        <a href="faq.html" style="color:var(--muted);">FAQ</a>
+        <a href="privacy.html" style="color:var(--muted);">Privacy Policy</a>
+        <a href="terms.html" style="color:var(--muted);">Terms of Use</a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -97,13 +120,54 @@
 <script src="js/auth.js"></script>
 <script src="js/nav.js"></script>
 <script>
+  // ============================================================
+  // FORM ENDPOINT — replace with your own Formspree endpoint
+  // Get one free at https://formspree.io (see setup instructions)
+  // ============================================================
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/PASTE_YOUR_FORM_ID";
+
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    status.textContent = "Thanks — your message is ready. Connect a form service (e.g. Formspree) to send it live.";
-    status.className = "form-status ok";
-    form.reset();
+
+    if (FORMSPREE_ENDPOINT.includes('PASTE_YOUR_FORM_ID')) {
+      status.textContent = "Contact form isn't connected yet — see setup instructions to finish this.";
+      status.className = "form-status err";
+      return;
+    }
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    status.textContent = "Sending...";
+    status.className = "form-status pending";
+
+    const payload = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      subject: document.getElementById('subject').value,
+      message: document.getElementById('message').value
+    };
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        status.textContent = "Message sent — we'll get back to you soon!";
+        status.className = "form-status ok";
+        form.reset();
+      } else {
+        status.textContent = "Something went wrong — please try again.";
+        status.className = "form-status err";
+      }
+    } catch (err) {
+      status.textContent = "Network error — please try again.";
+      status.className = "form-status err";
+    }
+    submitBtn.disabled = false;
   });
 </script>
 </body>

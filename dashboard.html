@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6P4B00FM9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S6P4B00FM9');
+</script>
 <style>
   .dash-welcome{padding:160px 0 20px;}
   .dash-welcome h1{font-size:clamp(28px,4vw,40px);}
@@ -45,6 +52,7 @@
       <a href="programs.html">Programs</a>
       <a href="products.html">Products</a>
       <a href="gallery.html">Gallery</a>
+      <a href="events.html">Events</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
@@ -106,6 +114,7 @@
   </section>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
@@ -152,6 +161,7 @@
         });
         registerBtn.textContent = 'Registered';
         registerStatus.innerHTML = '<span class="badge-registered">✓ You are signed up</span>';
+        sendConfirmationEmail(name, user.email);
       } catch (err) {
         registerBtn.disabled = false;
         registerBtn.textContent = 'Register';
@@ -160,6 +170,31 @@
       }
     });
   });
+
+  // ============================================================
+  // CONFIRMATION EMAIL — powered by EmailJS (free, no backend)
+  // Replace the placeholders below with your own EmailJS IDs.
+  // Get them free at https://emailjs.com (see setup instructions)
+  // ============================================================
+  const EMAILJS_PUBLIC_KEY = "PASTE_YOUR_PUBLIC_KEY";
+  const EMAILJS_SERVICE_ID = "PASTE_YOUR_SERVICE_ID";
+  const EMAILJS_TEMPLATE_ID = "PASTE_YOUR_TEMPLATE_ID";
+
+  function sendConfirmationEmail(name, email) {
+    if (EMAILJS_PUBLIC_KEY.includes('PASTE_YOUR') || typeof emailjs === 'undefined') {
+      console.log('EmailJS not configured yet — skipping confirmation email.');
+      return;
+    }
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      to_name: name,
+      to_email: email,
+      event_name: 'Smash and Paddle',
+      event_date: 'April 29, 2026',
+      event_time: '7:00 AM – 5:00 PM',
+      event_venue: 'CCA Covered Court'
+    }).catch(err => console.error('EmailJS error:', err));
+  }
 </script>
 </body>
 </html>

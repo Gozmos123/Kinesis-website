@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6P4B00FM9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S6P4B00FM9');
+</script>
+<style>
+  .admin-shell{padding:160px 0 80px;}
+  table{width:100%;border-collapse:collapse;margin-top:24px;}
+  th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);font-size:14px;}
+  th{color:var(--muted);font-family:'Rajdhani',sans-serif;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;}
+  td{color:var(--white);}
+  .denied{padding:160px 0 100px;text-align:center;}
+  .denied h1{font-size:26px;}
+  .denied p{color:var(--muted);margin-top:12px;}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="dashboard.html" class="navghost">Dashboard</a>
+        <a href="resources.html" class="navghost">Resources</a>
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+  <div id="adminDenied" class="denied" style="display:none;">
+    <div class="wrap">
+      <h1>Restricted</h1>
+      <p>This page is only available to Kinesis admins.</p>
+    </div>
+  </div>
+
+  <div id="adminShell" class="admin-shell" style="display:none;">
+    <div class="wrap">
+      <span class="eyebrow">ADMIN</span>
+      <h1 style="font-size:clamp(26px,3.6vw,36px);">Event Registrations</h1>
+      <p style="color:var(--muted);margin-top:10px;">Everyone currently registered for Smash and Paddle (April 29, 2026).</p>
+
+      <table id="regTable">
+        <thead>
+          <tr><th>Name</th><th>Email</th><th>Registered</th></tr>
+        </thead>
+        <tbody id="regBody">
+          <tr><td colspan="3" style="color:var(--muted);">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+<script>
+  const ADMIN_EMAILS = ['e.amberdawn@gmail.com'];
+
+  auth.onAuthStateChanged(async (user) => {
+    if (!user) {
+      window.location.href = 'login.html';
+      return;
+    }
+    if (!ADMIN_EMAILS.includes(user.email)) {
+      document.getElementById('adminDenied').style.display = 'block';
+      return;
+    }
+    document.getElementById('adminShell').style.display = 'block';
+
+    try {
+      const snapshot = await db.collection('registrations').orderBy('registeredAt', 'desc').get();
+      const body = document.getElementById('regBody');
+      if (snapshot.empty) {
+        body.innerHTML = '<tr><td colspan="3" style="color:var(--muted);">No registrations yet.</td></tr>';
+        return;
+      }
+      body.innerHTML = '';
+      snapshot.forEach(doc => {
+        const d = doc.data();
+        const date = d.registeredAt ? d.registeredAt.toDate().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—';
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${escapeHtml(d.name || '—')}</td><td>${escapeHtml(d.email || '—')}</td><td>${date}</td>`;
+        body.appendChild(row);
+      });
+    } catch (err) {
+      console.error(err);
+      document.getElementById('regBody').innerHTML = '<tr><td colspan="3" style="color:var(--error);">Could not load registrations.</td></tr>';
+    }
+  });
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+</script>
+</body>
+</html>

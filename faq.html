@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kinesis Organization — Racket Sports Officiating Education</title>
+<title>FAQ — Kinesis Organization</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
@@ -14,6 +14,18 @@
   gtag('js', new Date());
   gtag('config', 'G-S6P4B00FM9');
 </script>
+<style>
+  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;}
+  .faq-q{
+    display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+    font-family:'Rajdhani',sans-serif;font-weight:600;font-size:17px;letter-spacing:0.01em;
+  }
+  .faq-q .plus{font-size:22px;color:var(--blue);transition:transform .2s ease;flex-shrink:0;margin-left:16px;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-item.open .faq-a{max-height:300px;}
+  .faq-a p{color:var(--muted);font-size:14.5px;line-height:1.65;padding-top:14px;}
+</style>
 </head>
 <body>
 
@@ -21,7 +33,7 @@
   <nav class="wrap">
     <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
     <div class="navlinks">
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="programs.html">Programs</a>
       <a href="products.html">Products</a>
@@ -46,78 +58,43 @@
 </header>
 
 <main>
-
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+  <section class="page-header" style="padding-bottom:0;">
     <div class="hero-ring" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="hero-inner">
-        <span class="eyebrow">CITY COLLEGE OF ANGELES · NON-PROFIT ORGANIZATION</span>
-        <h1>Train the officials.<br><em>Elevate the game.</em></h1>
-        <p>Kinesis Organization builds skilled, confident officials for pickleball and paddle sports — through hands-on seminars, workshops, and mentorship rooted in movement science.</p>
-        <div class="hero-ctas">
-          <a href="programs.html" class="btn btn-primary">See Our Programs</a>
-          <a href="signup.html" class="btn btn-ghost guest-only">Create an Account</a>
-          <a href="dashboard.html" class="btn btn-ghost member-only" style="display:none;">Go to Dashboard</a>
-        </div>
-      </div>
+      <span class="eyebrow">GOT QUESTIONS?</span>
+      <h1>Frequently Asked Questions</h1>
+      <p>Everything you need to know about joining and getting involved with Kinesis.</p>
     </div>
   </section>
 
-  <div class="streaks" aria-hidden="true"><span></span><span></span><span></span></div>
-
-  <section id="explore">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="tag">EXPLORE</span>
-        <h2>Everything Kinesis, in one place</h2>
-        <p>A quick look at who we are and what we're building.</p>
+  <section>
+    <div class="wrap" style="max-width:760px;">
+      <div class="faq-item">
+        <div class="faq-q">Do I need experience to join Kinesis? <span class="plus">+</span></div>
+        <div class="faq-a"><p>No prior officiating experience is required. Our seminars and workshops are built to take you from complete beginner to confident on the court.</p></div>
       </div>
-      <div class="programs-grid" style="grid-template-columns:repeat(4,1fr);">
-        <a href="about.html" class="program-card">
-          <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></div>
-          <h3>About Us</h3>
-          <p>Our mission and story.</p>
-        </a>
-        <a href="programs.html" class="program-card">
-          <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0V4Z"/></svg></div>
-          <h3>Programs</h3>
-          <p>Seminars &amp; workshops.</p>
-        </a>
-        <a href="products.html" class="program-card">
-          <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9 18l-5-5"/></svg></div>
-          <h3>Products</h3>
-          <p>Recovery &amp; wellness picks.</p>
-        </a>
-        <a href="gallery.html" class="program-card">
-          <div class="program-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
-          <h3>Gallery</h3>
-          <p>Moments on court.</p>
-        </a>
+      <div class="faq-item">
+        <div class="faq-q">Is membership free? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Yes — creating a Kinesis account is completely free. It gives you a profile, access to member resources, and priority registration for events.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Who can join? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Kinesis is open to students, players, and community members interested in learning how to officiate pickleball and paddle sports — you don't need to be enrolled at City College of Angeles to participate in most events.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I register for an event? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Sign up for a free account, then head to your Dashboard — upcoming events will show a Register button right there.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where are events held? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Most events take place at the City College of Angeles (CCA) Covered Court in Angeles City, Philippines. Exact venues are listed on each event's details.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How can I get involved beyond attending events? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Reach out through our <a href="contact.html" style="color:var(--blue);">Contact page</a> — we're always looking for volunteers, campus partners, and community collaborators.</p></div>
       </div>
     </div>
   </section>
-
-  <div class="streaks" aria-hidden="true"><span></span><span></span><span></span></div>
-
-  <section id="cta">
-    <div class="wrap" style="text-align:center;max-width:640px;">
-      <div class="guest-only" data-display="block">
-        <span class="tag" style="display:block;">JOIN THE COMMUNITY</span>
-        <h2 style="font-size:clamp(26px,3.6vw,36px);margin-bottom:16px;">Create your free Kinesis account</h2>
-        <p style="color:var(--muted);font-size:16px;line-height:1.6;margin-bottom:32px;">Sign up to keep a profile with us — more member features are on the way.</p>
-        <a href="signup.html" class="btn btn-primary">Sign Up Free</a>
-      </div>
-      <div class="member-only royal-banner" style="display:none;" data-display="block">
-        <span class="crown">♛</span>
-        <span class="member-badge" style="margin-bottom:16px;">Kinesis Member</span>
-        <h2 style="font-size:clamp(26px,3.6vw,36px);margin:16px 0;">Welcome back, <span class="member-name">Member</span></h2>
-        <p style="color:var(--muted);font-size:16px;line-height:1.6;margin-bottom:32px;">Your dashboard has the latest event details and member resources waiting.</p>
-        <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer>
@@ -148,5 +125,12 @@
 <script src="js/firebase-config.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/nav.js"></script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+</script>
 </body>
 </html>

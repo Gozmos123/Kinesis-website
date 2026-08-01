@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile — Kinesis Organization</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html" class="brand"><img src="assets/logo.png" alt="Kinesis logo" class="brand-logo">KINESIS</a>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="products.html">Products</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div id="navAuthLoggedOut" style="display:flex;gap:10px;">
+        <a href="login.html" class="navghost">Log In</a>
+        <a href="signup.html" class="navcta">Sign Up</a>
+      </div>
+      <div id="navAuthLoggedIn" style="display:none;align-items:center;gap:14px;">
+        <a href="dashboard.html" class="navghost">Dashboard</a>
+        <a href="resources.html" class="navghost">Resources</a>
+        <a href="profile.html" class="nav-profile"><span class="avatar" id="navAvatarInitial">K</span><span id="navUserName">Member</span></a>
+        <button class="navghost logoutBtn" style="cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu">☰</button>
+  </nav>
+</header>
+
+<main>
+  <section class="profile-shell">
+    <div class="wrap">
+      <div class="profile-card" id="profileCard">
+        <div class="profile-avatar" id="profileInitial" style="box-shadow:0 0 0 3px var(--gold);">K</div>
+        <span class="member-badge">♛ Kinesis Member</span>
+        <h1 id="profileName" style="margin-top:14px;">Loading...</h1>
+        <p class="pmeta" id="profileEmail"></p>
+        <p class="pmeta" id="profileJoined"></p>
+
+        <div class="profile-fields">
+          <div>
+            <label>Organization</label>
+            <input type="text" value="Kinesis Organization" disabled>
+          </div>
+        </div>
+
+        <button class="btn btn-ghost btn-block logoutBtn" style="margin-top:30px;cursor:pointer;">Log Out</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

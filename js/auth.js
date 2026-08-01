@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         status.textContent = 'Account created! Redirecting...';
         status.className = 'form-status ok';
-        window.location.href = 'profile.html';
+        window.location.href = 'dashboard.html';
       } catch (err) {
         status.textContent = friendlyError(err);
         status.className = 'form-status err';
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         await auth.signInWithEmailAndPassword(email, password);
-        window.location.href = 'profile.html';
+        window.location.href = 'dashboard.html';
       } catch (err) {
         status.textContent = friendlyError(err);
         status.className = 'form-status err';

@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('profileInitial').textContent = name.charAt(0).toUpperCase();
       document.getElementById('profileName').textContent = name;
       document.getElementById('profileEmail').textContent = user.email;
+      document.getElementById('editName').value = name;
 
       try {
         const doc = await db.collection('users').doc(user.uid).get();
@@ -130,9 +131,45 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           document.getElementById('profileJoined').textContent = '';
         }
+        if (doc.exists && doc.data().bio) {
+          document.getElementById('editBio').value = doc.data().bio;
+        }
       } catch (err) {
         console.error(err);
       }
+
+      const saveBtn = document.getElementById('saveProfileBtn');
+      const saveStatus = document.getElementById('profileSaveStatus');
+      saveBtn.addEventListener('click', async () => {
+        const newName = document.getElementById('editName').value.trim();
+        const newBio = document.getElementById('editBio').value.trim();
+        if (!newName) {
+          saveStatus.textContent = 'Name cannot be empty.';
+          saveStatus.className = 'form-status err';
+          return;
+        }
+        saveBtn.disabled = true;
+        saveStatus.textContent = 'Saving...';
+        saveStatus.className = 'form-status pending';
+        try {
+          await user.updateProfile({ displayName: newName });
+          await db.collection('users').doc(user.uid).set({
+            name: newName,
+            bio: newBio,
+            email: user.email
+          }, { merge: true });
+          document.getElementById('profileName').textContent = newName;
+          document.getElementById('profileInitial').textContent = newName.charAt(0).toUpperCase();
+          if (navUserName) navUserName.textContent = newName;
+          if (navInitial) navInitial.textContent = newName.charAt(0).toUpperCase();
+          saveStatus.textContent = 'Saved!';
+          saveStatus.className = 'form-status ok';
+        } catch (err) {
+          saveStatus.textContent = 'Could not save — try again.';
+          saveStatus.className = 'form-status err';
+        }
+        saveBtn.disabled = false;
+      });
     });
   }
 });

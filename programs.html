@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6P4B00FM9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S6P4B00FM9');
+</script>
 </head>
 <body>
 
@@ -19,6 +26,7 @@
       <a href="programs.html" class="active">Programs</a>
       <a href="products.html">Products</a>
       <a href="gallery.html">Gallery</a>
+      <a href="events.html">Events</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
@@ -109,9 +117,24 @@
 </main>
 
 <footer>
-  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:16px;">
-    <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
-    <p>© 2026 Kinesis Organization · Non-Profit Educational Org · City College of Angeles</p>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:20px;width:100%;">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div class="foot-brand"><img src="assets/logo.png" alt="Kinesis logo" style="width:22px;height:22px;object-fit:contain;">KINESIS ORGANIZATION</div>
+      <div style="display:flex;gap:12px;">
+        <a href="https://www.facebook.com/profile.php?id=61588488886453" target="_blank" rel="noopener" aria-label="Kinesis on Facebook" style="width:36px;height:36px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#C7CCD9"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line);padding-top:20px;">
+      <p>© 2026 Kinesis Organization · Non-Profit Org · City College of Angeles</p>
+      <div style="display:flex;gap:20px;font-size:13px;">
+        <a href="events.html" style="color:var(--muted);">Events</a>
+        <a href="faq.html" style="color:var(--muted);">FAQ</a>
+        <a href="privacy.html" style="color:var(--muted);">Privacy Policy</a>
+        <a href="terms.html" style="color:var(--muted);">Terms of Use</a>
+      </div>
+    </div>
   </div>
 </footer>
 

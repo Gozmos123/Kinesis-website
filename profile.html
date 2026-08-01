@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S6P4B00FM9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S6P4B00FM9');
+</script>
 </head>
 <body>
 
@@ -19,6 +26,7 @@
       <a href="programs.html">Programs</a>
       <a href="products.html">Products</a>
       <a href="gallery.html">Gallery</a>
+      <a href="events.html">Events</a>
       <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
@@ -49,12 +57,22 @@
 
         <div class="profile-fields">
           <div>
+            <label for="editName">Full Name</label>
+            <input type="text" id="editName">
+          </div>
+          <div>
+            <label for="editBio">Bio</label>
+            <textarea id="editBio" rows="3" placeholder="Tell us a bit about yourself..."></textarea>
+          </div>
+          <div>
             <label>Organization</label>
             <input type="text" value="Kinesis Organization" disabled>
           </div>
+          <button class="btn btn-primary btn-block" id="saveProfileBtn">Save Changes</button>
+          <div class="form-status" id="profileSaveStatus"></div>
         </div>
 
-        <button class="btn btn-ghost btn-block logoutBtn" style="margin-top:30px;cursor:pointer;">Log Out</button>
+        <button class="btn btn-ghost btn-block logoutBtn" style="margin-top:14px;cursor:pointer;">Log Out</button>
       </div>
     </div>
   </section>
